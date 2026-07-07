@@ -1,0 +1,11 @@
+.idea
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+node_modules
+Gemfile.lock
+*.gem
+images
+_posts/*draft*.md
+.DS_Store

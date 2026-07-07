@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="SATB-VR.">
+  <meta name="keywords" content="Video Super-Resolution">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SATB-VR</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <!-- <link rel="icon" href="./images/logo.svg"> -->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+
+  <!-- Vendor Stylesheets -->
+  <!--=================js==========================-->
+  <link rel="stylesheet" href="./static/css/tab_gallery.css">
+  <link rel="stylesheet" href="./static/css/juxtapose.css">
+  <!-- <script src="./static/js/index.js"></script> -->
+  <!-- <link rel="stylesheet" href="./menlo"> -->
+  <link rel="stylesheet" href="./static/css/image_card_fader.css">
+  <link rel="stylesheet" href="./static/css/image_card_slider.css">
+
+  <!-- custom css file  -->
+  <link rel="stylesheet" href="./static/css/style.css">
+  <link rel="stylesheet" href="./static/css/twentytwenty.css">
+
+  <style>
+  .gradient-text {
+    background: linear-gradient(90deg, #ff7e5f, #feb47b, #ffcc70);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: bold;
+  }
+  </style>
+
+</head>
+<body>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title"><span class="gradient-text">SATB-VR:</span> Training Few-Step Video Restoration Diffusion Model using SNR-Aware Trajectory Blending</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://csbhr.github.io/">Haoran Bai</a><sup>1,∗</sup>,&nbsp
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=-jJkyWsAAAAJ&hl=zh-CN">Xiaoxu Chen</a><sup>1,∗</sup>,&nbsp
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=h4iDziYAAAAJ&hl=zh-CN">Xiaoyu Liu</a><sup>1,2</sup>,&nbsp
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=F554LkQAAAAJ&hl=en">Zongsheng Yue</a><sup>3</sup>,&nbsp
+            </span>
+            <br>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=brmDxnsAAAAJ&hl=zh-CN">Sibin Deng</a><sup>1,&dagger;</sup>,&nbsp
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=rUOpCEYAAAAJ&hl=en">Wangmeng Zuo</a><sup>2</sup>,&nbsp
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=NpTmcKEAAAAJ&hl=en">Ying Chen</a><sup>1,&dagger;</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Alibaba Group</span>&nbsp;&nbsp;
+            <span class="author-block"><sup>2</sup>Harbin Institute of Technology</span>&nbsp;&nbsp;
+            <span class="author-block"><sup>3</sup>Xi'an Jiaotong University</span><br>
+            <span class="author-block"><sup>*</sup> Equal contribution</span>&nbsp;&nbsp;
+            <span class="author-block"><sup>&dagger;</sup> Corresponding author</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2606.28677"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper (Arxiv)</span>
+                </a>
+              </span>
+              <!-- <span class="link-block">
+                <a href="#"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span> -->
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/chenxx89/SATB-VR"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+            </div>
+          </div>
+
+          <!-- <div class="is-size-5 notes">
+            <p style="color: #ec2222;">This webpage contains multiple ultra-high-definition videos, and they may load slowly. Please be patient, thanks! If loading fails, you can download the videos manually from this [<a href="https://github.com/chenxx89/chenxx89.github.io/tree/main/projects/satb-vr/assets">link</a>].</p>
+          </div> -->
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- first row -->
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+
+
+        <div class="item">
+          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5384">
+            <div class="desc">AIGC</div>
+            <div class="video">
+              <video muted autoplay="autoplay" loop="loop" width="100%">
+                <source src="assets/videos-teaser/demo1_input.mp4" type="video/mp4">
+              </video> 
+            </div>
+            <div class="video">
+              <video muted autoplay="autoplay" loop="loop" width="100%">
+                <source src="assets/videos-teaser/demo1_ours.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5384">
+            <div class="desc">AIGC</div>
+            <div class="video">
+              <video muted autoplay="autoplay" loop="loop" width="100%">
+                <source src="assets/videos-teaser/demo2_input.mp4" type="video/mp4">
+              </video> 
+            </div>
+            <div class="video">
+              <video muted autoplay="autoplay" loop="loop" width="100%">
+                <source src="assets/videos-teaser/demo2_ours.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5384">
+            <div class="desc">AIGC</div>
+            <div class="video">
+              <video muted autoplay="autoplay" loop="loop" width="100%">
+                <source src="assets/videos-teaser/demo3_input.mp4" type="video/mp4">
+              </video> 
+            </div>
+            <div class="video">
+              <video muted autoplay="autoplay" loop="loop" width="100%">
+                <source src="assets/videos-teaser/demo3_ours.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5384">
+            <div class="desc">AIGC</div>
+            <div class="video">
+              <video muted autoplay="autoplay" loop="loop" width="100%">
+                <source src="assets/videos-teaser/demo4_input.mp4" type="video/mp4">
+              </video> 
+            </div>
+            <div class="video">
+              <video muted autoplay="autoplay" loop="loop" width="100%">
+                <source src="assets/videos-teaser/demo4_ours.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5384">
+            <div class="desc">Real-world</div>
+            <div class="video">
+              <video muted autoplay="autoplay" loop="loop" width="100%">
+                <source src="assets/videos-teaser/demo5_input.mp4" type="video/mp4">
+              </video> 
+            </div>
+            <div class="video">
+              <video muted autoplay="autoplay" loop="loop" width="100%">
+                <source src="assets/videos-teaser/demo5_ours.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5384">
+            <div class="desc">Real-world</div>
+            <div class="video">
+              <video muted autoplay="autoplay" loop="loop" width="100%">
+                <source src="assets/videos-teaser/demo6_input.mp4" type="video/mp4">
+              </video> 
+            </div>
+            <div class="video">
+              <video muted autoplay="autoplay" loop="loop" width="100%">
+                <source src="assets/videos-teaser/demo6_ours.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5384">
+            <div class="desc">Real-world</div>
+            <div class="video">
+              <video muted autoplay="autoplay" loop="loop" width="100%">
+                <source src="assets/videos-teaser/demo7_input.mp4" type="video/mp4">
+              </video> 
+            </div>
+            <div class="video">
+              <video muted autoplay="autoplay" loop="loop" width="100%">
+                <source src="assets/videos-teaser/demo7_ours.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+        </div>
+
+      </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+      <!-- <div class="column"> -->
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            While diffusion models excel in video restoration, their reliance on extensive iterative steps limits efficiency. Conversely, aggressive single-step distillation often compromises fine texture recovery. To achieve an optimal balance, we present SATB-VR, a few-step paradigm that jump-starts the denoising process via an auxiliary predictor, explicitly bypassing early low signal-to-noise ratio (SNR) steps. However, naive joint training of the predictor and the denoiser inherently introduces a severe train-inference discrepancy. To resolve this, we propose the SNR-Aware Trajectory Blending (SATB) strategy. During the forward process, SATB constructs the noisy input by dynamically blending the predictor's output with the ground-truth trajectory based on the SNRs. This forces the denoiser to robustly compensate for initial prediction errors while smoothly converging to the clean data manifold. Furthermore, we introduce a Denoiser-Driven Consistency (DDC) loss, leveraging the concurrently updated denoiser as a dynamic evaluator to explicitly align internal features and boost predictor accuracy. Extensive experiments demonstrate that, under flexible few-step inference regimes (eg., ≤ 5 steps), SATB-VR performs favorably against existing approaches on synthetic, real-world, and AIGC benchmarks.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+  </div>
+</section>
+
+  
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <!-- <div class="column is-four-fifths"> -->
+      <div class="column">
+        <h2 class="title is-3">Method</h2>
+        <div class="content has-text-justified">
+          <div class="column">
+            <img src="assets/framework.png" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <!-- <div class="column is-four-fifths"> -->
+      <div class="column">
+        <h2 class="title is-3">Quantitative results</h2>
+
+
+        <div class="content has-text-justified">
+          <p>
+            For synthetic testsets, we employ full-reference metrics (PSNR, SSIM, LPIPS) and no-reference metrics (MANIQA, CLIP-IQA, MUSIQ, DOVER). For real-world and AIGC testset, we only adopt no-reference metrics due to the absence of ground truth. Experimental results show that our SATB-VR achieves almost the best results on no-reference metrics.
+          </p>
+          <div class="column">
+            <img src="assets/quantitative-results.png" />
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+  
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <!-- <div class="column is-four-fifths"> -->
+      <div class="column">
+        <h2 class="title is-3">Qualitative results</h2>
+
+        <div class="content has-text-justified">
+          <div class="column">
+            <img src="assets/qualitative-results.png" />
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+
+      <div class="columns is-centered has-text-centered title is-5">Real-world videos</div>
+      <div id="results-carousel" class="carousel results-carousel video-carousel">
+        <div class="item item-steve">
+          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
+            <source src="assets/videos-sotas/video_demo_ugc50_01.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-chair-tp">
+          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
+            <source src="assets/videos-sotas/video_demo_ugc50_02.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-chair-tp">
+          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
+            <source src="assets/videos-sotas/video_demo_ugc50_03.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-chair-tp">
+          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
+            <source src="assets/videos-sotas/video_demo_ugc50_04.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-chair-tp">
+          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
+            <source src="assets/videos-sotas/video_demo_ugc50_05.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-steve">
+          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
+            <source src="assets/videos-sotas/video_demo_videolq_01.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+
+
+      <br><br>
+
+      <div class="columns is-centered has-text-centered title is-5">Synthetic low-quality videos</div>
+      <div id="results-carousel" class="carousel results-carousel video-carousel">
+        <div class="item item-steve">
+          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
+            <source src="assets/videos-sotas/video_demo_youhq40_01.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-chair-tp">
+          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
+            <source src="assets/videos-sotas/video_demo_youhq40_02.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-chair-tp">
+          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
+            <source src="assets/videos-sotas/video_demo_youhq40_03.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-chair-tp">
+          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
+            <source src="assets/videos-sotas/video_demo_youhq40_04.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-chair-tp">
+          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
+            <source src="assets/videos-sotas/video_demo_youhq40_05.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-steve">
+          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
+            <source src="assets/videos-sotas/video_demo_youhq40_06.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-steve">
+          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
+            <source src="assets/videos-sotas/video_demo_youhq40_07.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-steve">
+          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
+            <source src="assets/videos-sotas/video_demo_spmcs_01.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{bai2026satb,
+      title={SATB-VR: Training Few-Step Video Restoration Diffusion Model using SNR-Aware Trajectory Blending},
+      author={Bai, Haoran and Chen, Xiaoxu and Liu, Xiaoyu and Yue, Zongsheng and Deng, Sibin and Zuo, Wangmeng and Chen, Ying},
+      journal={arXiv preprint arXiv:2606.28677},
+      year={2026}
+}</code></pre>
+  </div>
+</section>
+
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="https://github.com/SeedVR-CVPR25">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/SeedVR-CVPR25" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <script src="./static/js/jquery.event.move.js"></script>
+  <script src="./static/js/jquery.twentytwenty.js"></script>
+  <script>
+  $(function(){
+    $(".twentytwenty-container").twentytwenty();
+
+    // Sync paired videos in twentytwenty containers
+    $(".twentytwenty-container").each(function() {
+      var videos = $(this).find("video");
+      if (videos.length < 2) return;
+      var master = videos[0];
+      var slave = videos[1];
+
+      master.addEventListener("seeked", function() {
+        slave.currentTime = master.currentTime;
+      });
+
+      master.addEventListener("playing", function() {
+        slave.currentTime = master.currentTime;
+        slave.play();
+      });
+
+      master.addEventListener("pause", function() {
+        slave.pause();
+      });
+
+      // Re-sync on loop restart
+      master.addEventListener("timeupdate", function() {
+        if (Math.abs(master.currentTime - slave.currentTime) > 0.1) {
+          slave.currentTime = master.currentTime;
+        }
+      });
+    });
+  });
+  </script>
+
+</body>
+</html>
