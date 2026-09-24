@@ -6,6 +6,5 @@ _site/
 node_modules
 Gemfile.lock
 *.gem
-images
 _posts/*draft*.md
 .DS_Store
