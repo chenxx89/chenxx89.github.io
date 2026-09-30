@@ -6,17 +6,6 @@
   const results = window.FASTVR_RESULTS;
   const $ = (selector) => document.querySelector(selector);
 
-  if (config.paperUrl) {
-    const paper = $("#paper-link");
-    paper.href = config.paperUrl;
-    paper.target = "_blank";
-    paper.rel = "noopener noreferrer";
-    paper.classList.remove("unavailable");
-    paper.removeAttribute("aria-disabled");
-    paper.removeAttribute("title");
-    paper.querySelector(".soon").remove();
-  }
-
   // No long-video URL is attached until an explicit play click. Only two reusable
   // elements own sources; switching detaches the old pair and cancels loading.
   const player = $("#comparison");
@@ -112,7 +101,7 @@
       pause();
       if (error.name === "NotAllowedError") {
         wanted = false;
-        showMessage("Press play to start the comparison.");
+        showMessage("Press play again to enable audio.");
       } else if (error.name !== "AbortError") {
         failed = true;
         showMessage("Video playback failed. Please check the media files or try another browser.");
@@ -348,9 +337,9 @@
   let clipGeneration = 0;
   let clipVisible = false;
   let clipAutoplayPending = false;
-  // Load only the selected clip (including the first); start it when visible.
+  // Load the first clip without playing it; user-selected clips play when visible.
   // Switching detaches the previous source before attaching the new one.
-  function selectComparisonClip(index) {
+  function selectComparisonClip(index, autoplay = true) {
     clipGeneration += 1;
     activeClip = (index + comparisonClips.length) % comparisonClips.length;
     const clip = comparisonClips[activeClip];
@@ -365,7 +354,7 @@
     clipButtons.querySelectorAll("button").forEach((button, i) => {
       button.setAttribute("aria-pressed", String(i === activeClip));
     });
-    clipAutoplayPending = true;
+    clipAutoplayPending = autoplay;
     comparisonVideo.preload = "metadata";
     comparisonVideo.src = clip.src;
     comparisonVideo.load();
@@ -415,7 +404,7 @@
     if (clipVisible) playComparisonClip();
     else comparisonVideo.pause();
   }, { threshold:0 });
-  selectComparisonClip(0);
+  selectComparisonClip(0, false);
   clipObserver.observe(comparisonVideo);
   document.addEventListener("visibilitychange", () => {
     if (document.hidden) comparisonVideo.pause();

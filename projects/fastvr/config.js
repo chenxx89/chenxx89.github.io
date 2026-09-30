@@ -1,6 +1,5 @@
 /* Media sources are assigned only to the selected videos. */
 window.FASTVR_SITE = {
-  "paperUrl": null,
   "demos": [
     {
       "title": "Video 01",

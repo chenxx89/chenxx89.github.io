@@ -56,9 +56,6 @@ h1 { font-size:clamp(32px,3.65vw,46px); font-weight:650; letter-spacing:-.05em; 
 .button:hover { background:var(--soft); transform:translateY(-2px); }
 .button.primary { background:var(--ink); border-color:var(--ink); color:#fff; }
 .button.primary:hover { background:#263e5c; }
-.button.unavailable { color:#697483; cursor:default; background:#f9fafc; }
-.button.unavailable:hover { transform:none; }
-.soon { font-size:11px; text-transform:uppercase; letter-spacing:.02em; border-left:1px solid var(--line); padding-left:8px; }
 .hero-stats { display:grid; grid-template-columns:repeat(4,1fr); margin-top:42px; border-block:1px solid var(--line); padding-block:22px; }
 .hero-stats>div { display:flex; flex-direction:column; justify-content:center; gap:4px; }
 .hero-stats>div+div { border-left:1px solid var(--line); }
@@ -72,9 +69,12 @@ h1 { font-size:clamp(32px,3.65vw,46px); font-weight:650; letter-spacing:-.05em; 
 .section-heading>p { color:var(--muted); font-size:14px; max-width:305px; text-align:right; }
 #method .section-heading, #results .section-heading { flex-wrap:wrap; row-gap:12px; }
 #method .section-heading>p, #results .section-heading>p { max-width:none; flex-shrink:0; white-space:nowrap; }
-.long-video-layout { display:grid; grid-template-columns:minmax(0,380px) minmax(0,1fr); gap:40px; max-width:980px; margin-inline:auto; align-items:start; }
-.long-video-picker { padding-top:4px; min-width:0; align-self:stretch; display:flex; flex-direction:column; }
-.media-note { color:var(--muted); font-size:13px; line-height:1.7; margin-top:9px; max-width:420px; }
+.long-video-layout { display:grid; grid-template-columns:minmax(0,380px) minmax(0,1fr); gap:40px; max-width:980px; margin-inline:auto; align-items:end; }
+.long-video-picker { padding-top:4px; min-width:0; align-self:end; display:flex; flex-direction:column; }
+.video-notes { margin-top:12px; }
+.media-note { color:var(--muted); font-size:13px; line-height:1.7; max-width:420px; }
+.media-note + .media-note { margin-top:6px; }
+.media-note a { color:var(--blue); text-decoration:underline; text-underline-offset:2px; }
 .long-video-layout .sync-label,.long-video-layout .control-divider { display:none; }
 .comparison { background:#101820; border-radius:var(--radius); overflow:hidden; box-shadow:0 14px 38px #17212e12; }
 .video-stage { position:relative; aspect-ratio:9/16; --split:50%; background:#15212f; }

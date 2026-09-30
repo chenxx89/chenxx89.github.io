@@ -1,6 +1,6 @@
-/* Values transcribed from the FastVR technical report and teaser; no AIGC benchmark. */
+/* Values transcribed from the FastVR paper and teaser; no AIGC benchmark. */
 window.FASTVR_RESULTS = {
-  "source": "FastVR technical report, quantitative results table",
+  "source": "FastVR paper, quantitative results table",
   "methods": [
     "STAR",
     "SeedVR",
